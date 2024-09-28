@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Since Build</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #timePassed {
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Time Since This HTML Script Was Built</h1>
+<div id="timePassed">Loading...</div>
+
+<script>
+    // Set the build date and time (YYYY-MM-DDTHH:MM:SS)
+    const buildDate = new Date("2024-09-28T10:15:10");
+
+    function updateTime() {
+        const now = new Date();
+        const diffInSeconds = Math.floor((now - buildDate) / 1000);
+
+        // Calculate time units
+        const days = Math.floor(diffInSeconds / (60 * 60 * 24));
+        const hours = Math.floor((diffInSeconds % (60 * 60 * 24)) / (60 * 60));
+        const minutes = Math.floor((diffInSeconds % (60 * 60)) / 60);
+        const seconds = diffInSeconds % 60;
+
+        // Display the time passed
+        document.getElementById("timePassed").innerText = 
+            `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds have passed since this script was built.`;
+    }
+
+    // Update the time every second
+    setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>
